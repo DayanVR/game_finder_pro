@@ -64,6 +64,6 @@ module.exports.handler = serverless(app);
 /*app.use("/.netlify/functions/server", app);
 export const handler = serverless(app);*/
 
-/*app.listen(PORT, () => {
+app.listen(PORT, () => {
   console.log(`Proxy server is running`);
-});*/
+});
