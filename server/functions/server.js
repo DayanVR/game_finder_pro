@@ -1,4 +1,4 @@
-import serverless from "serverless-http";
+const serverless = require("serverless-http");
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
@@ -9,7 +9,7 @@ const PORT = 4000;
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.post("/games", async (req, res) => {
+app.post("/.netlify/functions/server/games", async (req, res) => {
   try {
     const { fields, where, limit, offset, sort, search } = req.body;
 
@@ -36,7 +36,7 @@ app.post("/games", async (req, res) => {
   }
 });
 
-app.post("/details", async (req, res) => {
+app.post("/.netlify/functions/server/details", async (req, res) => {
   try {
     const { fields, where } = req.body;
 
@@ -58,8 +58,11 @@ app.post("/details", async (req, res) => {
   }
 });
 
-app.use("/.netlify/functions/server", app);
-export const handler = serverless(app);
+module.exports.handler = serverless(app);
+
+/*app.use("/.netlify/functions/server", app);
+export const handler = serverless(app);*/
+
 /*app.listen(PORT, () => {
   console.log(`Proxy server is running`);
 });*/

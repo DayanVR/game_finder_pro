@@ -1,15 +1,30 @@
-// functions/api.js
+import serverless from "serverless-http";
 const axios = require("axios");
+const express = require("express");
+const cors = require("cors");
+
+app.use(cors()); 
+app.use(express.json());
 
 exports.handler = async function (event, context) {
   try {
-    const { path, body } = JSON.parse(event.body);
+    const { path, fields, where, limit, offset, sort, search } = JSON.parse(
+      event.body
+    );
 
     let apiUrl;
+    let query;
     if (path === "/games") {
       apiUrl = "https://api.igdb.com/v4/games";
+      query = `fields ${fields}; where ${where}; limit ${limit}; offset ${offset};`;
+      if (search && search.length > 0) {
+        query += ` search "${search}";`;
+      } else {
+        query += ` sort ${sort};`;
+      }
     } else if (path === "/details") {
       apiUrl = "https://api.igdb.com/v4/games";
+      query = `fields ${fields}; where ${where};`;
     } else {
       return {
         statusCode: 404,
@@ -23,7 +38,8 @@ exports.handler = async function (event, context) {
       "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
     };
 
-    const response = await axios.post(apiUrl, body, { headers });
+    const response = await axios.post(apiUrl, query, { headers });
+    console.log(response.data);
 
     return {
       statusCode: 200,
