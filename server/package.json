@@ -4,8 +4,8 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "node functions/server.js",
-    "build": "npm run build"
+    "build": "echo 'No build step needed for serverless functions'",
+    "deploy": "vercel --prod"
   },
   "keywords": [],
   "author": "",

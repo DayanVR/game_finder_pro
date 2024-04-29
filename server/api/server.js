@@ -1,15 +1,15 @@
-const serverless = require("serverless-http");
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
+const serverless = require("serverless-http");
 
 const app = express();
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.post("/games", async (req, res) => {
+app.post("/api/games", async (req, res) => {
   try {
     const { fields, where, limit, offset, sort, search } = req.body;
 
@@ -36,7 +36,7 @@ app.post("/games", async (req, res) => {
   }
 });
 
-app.post("/details", async (req, res) => {
+app.post("/api/details", async (req, res) => {
   try {
     const { fields, where } = req.body;
 
@@ -58,7 +58,7 @@ app.post("/details", async (req, res) => {
   }
 });
 
-/*module.exports = app;*/
+module.exports = app;
 module.exports.handler = serverless(app);
 
 /*app.use("/.netlify/functions/server", app);
