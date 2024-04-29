@@ -11,10 +11,14 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 app.get("/game", async (req, res) => {
+  const body = {
+    fields:
+      "name,slug,rating,rating_count,cover.url,genres.name,game_modes.name,involved_companies.company.name,involved_companies.*,first_release_date,storyline,summary,player_perspectives.name,screenshots.url,themes.name,videos.*,platforms.name,platforms.category,platforms.platform_family.*",
+  };
   try {
     const { fields, where } = req.body;
 
-    let query = `fields ${fields}; where ${where};`;
+    let query = `fields ${fields};`;
     const headers = {
       Accept: "application/json",
       Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
