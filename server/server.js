@@ -87,8 +87,8 @@ app.post("/api/details", async (req, res) => {
 });
 
 module.exports = app;
-export const handler = serverless(app);
+module.exports.handler = serverless(app);
 
 /*app.use("/.netlify/functions/server", app);
-module.exports.handler = serverless(app);
-*/
+export const handler = serverless(app);*/
+
