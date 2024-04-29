@@ -1,9 +1,10 @@
+import serverless from "serverless-http";
 const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 
 const app = express();
-const PORT = 4000; 
+const PORT = 4000;
 
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
@@ -20,10 +21,10 @@ app.post("/games", async (req, res) => {
     }
     const headers = {
       Accept: "application/json",
-      Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi", 
+      Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
       "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
     };
-    
+
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
@@ -43,9 +44,9 @@ app.post("/details", async (req, res) => {
     const headers = {
       Accept: "application/json",
       Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
-      "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk", 
+      "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
     };
-    
+
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
@@ -57,6 +58,8 @@ app.post("/details", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
+app.use("/.netlify/functions/server", app);
+export const handler = serverless(app);
+/*app.listen(PORT, () => {
   console.log(`Proxy server is running`);
-});
+});*/

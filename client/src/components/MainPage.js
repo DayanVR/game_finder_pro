@@ -52,7 +52,7 @@ const App = () => {
         "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
       };
       try {
-        const response = await axios.post("http://localhost:4000/games", body, {
+        const response = await axios.post("/.netlify/functions/server/games", body, {
           headers,
         });
         setGamesLibrary(response.data);
