@@ -38,7 +38,7 @@ function GameDetailsPage() {
 
       try {
         const response = await axios.post(
-          "/.netlify/functions/server/details",
+          "http://localhost:4000/details",
           body,
           {
             headers,
