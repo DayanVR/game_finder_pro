@@ -15,7 +15,7 @@ app.post("/game", async (req, res) => {
   try {
     const { fields, where } = req.body;
 
-    let query = `fields ${fields}; where ${where};`;
+    let query = `fields ${fields};`;
     const headers = {
       Accept: "application/json",
       Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
