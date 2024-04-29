@@ -10,6 +10,27 @@ app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/game", async (req, res) => {
+  try {
+    const { fields, where } = req.body;
+
+    let query = `fields ${fields}; where ${where};`;
+    const headers = {
+      Accept: "application/json",
+      Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
+      "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
+    };
+
+    const response = await axios.post("https://api.igdb.com/v4/games", query, {
+      headers,
+    });
+
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error:", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 app.listen(PORT, () => console.log("Server ready on port 4000."));
 
@@ -63,7 +84,6 @@ app.post("/api/details", async (req, res) => {
 });
 
 module.exports = app;
-
 
 /*app.use("/.netlify/functions/server", app);
 export const handler = serverless(app);*/
