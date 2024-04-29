@@ -9,33 +9,7 @@ const PORT = process.env.PORT || 4000;
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.get("/api/games", async (req, body) => {
-  try {
-    const { fields, where, limit, offset, sort, search } = req.body;
-
-    let query = `fields ${fields}; where ${where}; limit ${limit}; offset ${offset};`;
-    if (search && search.length > 0) {
-      query += ` search "${search}";`;
-    } else {
-      query += ` sort ${sort};`;
-    }
-    const headers = {
-      Accept: "application/json",
-      Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
-      "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
-    };
-
-    const response = await axios.post("https://api.igdb.com/v4/games", query, {
-      headers,
-    });
-    console.log(response.data);
-    res.json(response.data);
-  } catch (error) {
-    console.error("Error:", error.message);
-    res.status(500).json({ error: "Internal server error" });
-  }
-  res.end("Hello");
-});
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.post("/api/games", async (req, res) => {
   try {
