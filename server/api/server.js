@@ -9,7 +9,7 @@ const PORT = process.env.PORT || 4000;
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/api", (req, res) => res.json({ message: "Hello world" }));
 
 app.post("/api/games", async (req, res) => {
   try {
@@ -65,4 +65,3 @@ module.exports.handler = serverless(app);
 
 /*app.use("/.netlify/functions/server", app);
 export const handler = serverless(app);*/
-
