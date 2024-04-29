@@ -52,13 +52,9 @@ const App = () => {
         "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
       };
       try {
-        const response = await axios.post(
-          "/.netlify/functions/server/games",
-          body,
-          {
-            headers,
-          },
-        );
+        const response = await axios.post("/.netlify/functions/server/games", body, {
+          headers,
+        });
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {
@@ -149,7 +145,7 @@ const App = () => {
         setTitleChanged={setTitleChanged}
       />
       <h1 className="z-50 -mb-8 mt-2 text-right text-2xl font-medium text-red-500 sm:text-3xl md:ml-4 lg:mb-6 lg:mr-10 lg:text-4xl xl:ml-8 xl:mt-5 xl:hidden 2xl:ml-10">
-        Hello WORLD
+        Game Finder PRO
       </h1>
 
       <div className="max-xl:lg:mx-16 xl:pl-[340px] 2xl:pl-72">
