@@ -9,6 +9,10 @@ const PORT = process.env.PORT || 4000;
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
+app.get('/api', (req, body) => {
+  res.end('Hello')
+})
+
 app.post("/api/games", async (req, res) => {
   try {
     const { fields, where, limit, offset, sort, search } = req.body;
