@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "start": "node functions/server.js",
-    "build": "npm run build"
+    "build": "netlify deploy --prod"
   },
   "keywords": [],
   "author": "",
