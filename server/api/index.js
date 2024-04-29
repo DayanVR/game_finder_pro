@@ -1,3 +1,3 @@
-import app from "../functions/server";
+import app from "../server";
 
 export default app;
