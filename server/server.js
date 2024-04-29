@@ -58,8 +58,8 @@ app.post("/details", async (req, res) => {
   }
 });
 
-module.exports = app;
-/*module.exports.handler = serverless(app);*/
+/*module.exports = app;*/
+module.exports.handler = serverless(app);
 
 /*app.use("/.netlify/functions/server", app);
 export const handler = serverless(app);*/
