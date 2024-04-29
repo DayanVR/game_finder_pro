@@ -28,7 +28,7 @@ app.post("/api/games", async (req, res) => {
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
-
+    console.log(response.data);
     res.json(response.data);
   } catch (error) {
     console.error("Error:", error.message);

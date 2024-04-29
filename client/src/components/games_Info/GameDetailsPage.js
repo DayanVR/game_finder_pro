@@ -37,13 +37,9 @@ function GameDetailsPage() {
       };
 
       try {
-        const response = await axios.post(
-          "http://localhost:4000/api/details",
-          body,
-          {
-            headers,
-          },
-        );
+        const response = await axios.post("/api/details", body, {
+          headers,
+        });
         setGame(response.data[0]);
       } catch (error) {
         console.error("Error fetching game details:", error);

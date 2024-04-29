@@ -2,7 +2,7 @@
   "name": "game_finder_pro",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://game-finder-pro.netlify.app",
+  "proxy": "http://game-finder-pro.vercel.app/api/games",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",

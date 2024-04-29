@@ -52,7 +52,7 @@ const App = () => {
         "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
       };
       try {
-        const response = await axios.post("http://localhost:4000/api/games", body, {
+        const response = await axios.post("/api/games", body, {
           headers,
         });
         setGamesLibrary(response.data);
@@ -76,6 +76,24 @@ const App = () => {
     setGamesLibrary,
     setFilteredGames,
   ]);
+
+  
+    /*axios
+    .post("/api/games", {
+      fields: "name",
+      where: "id = 1",
+      limit: 10,
+      offset: 0,
+      sort: "name",
+      search: "gta",
+    })
+    .then((response) => {
+      console.log(response.data);
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+    });*/
+  
 
   const handleOrderChange = (e) => {
     setPage(1);
