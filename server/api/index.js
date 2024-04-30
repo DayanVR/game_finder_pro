@@ -6,7 +6,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: "https://game-finder-pro.netlify.app",
+  origin: "https://gamefinderpro.netlify.app",
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization", "Client-ID"],
 };
