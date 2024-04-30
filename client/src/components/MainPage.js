@@ -51,8 +51,6 @@ const App = () => {
         Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
         "Client-ID": `${process.env.REACT_APP_CLIENT_ID}`,
       };
-      console.log(headers);
-      console.log(`${process.env.REACT_APP_API_URL}`);
       try {
         const response = await axios.post(
           "https://game-finder-pro.onrender.com/api/games",
