@@ -61,7 +61,6 @@ app.post("/api/details", async (req, res) => {
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
-    console.log(headers);
 
     res.json(response.data);
   } catch (error) {
