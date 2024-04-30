@@ -52,10 +52,9 @@ const App = () => {
         "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
       };
       try {
-        const response = await axios.post("/api/games", body, {
+        const response = await axios.post("/api", body, {
           headers,
         });
-        console.log(response.data);
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {
