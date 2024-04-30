@@ -55,7 +55,7 @@ const App = () => {
       console.log(`${process.env.REACT_APP_API_URL}`);
       try {
         const response = await axios.post(
-          `${process.env.REACT_APP_API_URL}/api/games`,
+          "https://game-finder-pro.onrender.com/api/games",
           body,
           {
             headers,
