@@ -4,6 +4,7 @@ const helmet = require("helmet");
 const cors = require("cors");
 
 const app = express();
+app.use(helmet());
 const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
@@ -12,7 +13,6 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization", "Client-ID"],
 };
 app.use(cors(corsOptions));
-app.use(helmet());
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Render"));
