@@ -10,11 +10,11 @@ const PORT = process.env.PORT || 4000;
 app.use(cors()); // Enable CORS for all routes
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Express on Vercel"));
+app.get("/", (req, res) => res.send("Express on Render"));
 
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
-app.post("/api", async (req, res) => {
+/*app.post("/api", async (req, res) => {
   try {
     const { fields, where, limit, offset, sort, search } = req.body;
     
@@ -42,7 +42,7 @@ app.post("/api", async (req, res) => {
     console.error("Error:", error.message);
     res.status(500).json({ error: "Internal server error" });
   }
-});
+});*/
 
 app.post("/api/games", async (req, res) => {
   try {

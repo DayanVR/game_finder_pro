@@ -52,9 +52,13 @@ const App = () => {
         "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
       };
       try {
-        const response = await axios.post("/api/games", body, {
-          headers,
-        });
+        const response = await axios.post(
+          "https://game-finder-pro.onrender.com/api/games",
+          body,
+          {
+            headers,
+          },
+        );
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {
