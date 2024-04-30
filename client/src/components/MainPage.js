@@ -52,7 +52,7 @@ const App = () => {
         "Client-ID": `${process.env.REACT_APP_CLIENT_ID}`,
       };
       console.log(headers);
-      console.log(`${process.env.REACT_APP_API_URL}/api/games`);
+      console.log(`${process.env.REACT_APP_API_URL}`);
       try {
         const response = await axios.post(
           `${process.env.REACT_APP_API_URL}/api/games`,
