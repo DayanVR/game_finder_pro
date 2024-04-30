@@ -53,13 +53,12 @@ const App = () => {
       };
       try {
         const response = await axios.post(
-          "https://game-finder-pro.onrender.com/api/games",
+          `${process.env.REACT_APP_API_URL}/api/games`,
           body,
           {
             headers,
           },
         );
-        console.log(`${process.env.REACT_APP_API_URL}/api/games`);
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {

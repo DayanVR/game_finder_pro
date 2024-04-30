@@ -38,7 +38,7 @@ function GameDetailsPage() {
 
       try {
         const response = await axios.post(
-          "https://game-finder-pro.onrender.com/api/details",
+          `${process.env.REACT_APP_API_URL}/api/details`,
           body,
           {
             headers,

@@ -7,7 +7,6 @@ const cors = require("cors");
 const authorization = process.env.AUTHORIZATION;
 const clientId = process.env.CLIENT_ID;
 
-
 const app = express();
 app.use(helmet());
 const PORT = process.env.PORT || 4000;
