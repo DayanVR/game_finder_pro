@@ -1,0 +1,5 @@
+/*
+  Content-Security-Policy: default-src 'self'
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: no-referrer-when-downgrade
