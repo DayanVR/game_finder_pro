@@ -7,16 +7,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 app.use(helmet());
 
-app.use(
-  helmet({
-    contentSecurityPolicy: {
-      directives: {
-        "script-src": ["'self'"],
-        "style-src": ["'self'"],
-      },
-    },
-  }),
-);
+app.use(helmet.contentSecurityPolicy());
 
 const corsOptions = {
   origin: "https://gamefinderpro.netlify.app",
