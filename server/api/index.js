@@ -11,6 +11,7 @@ const corsOptions = {
   allowedHeaders: ["Content-Type", "Authorization", "Client-ID"],
 };
 app.use(cors(corsOptions));
+app.use(helmet());
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Render"));
