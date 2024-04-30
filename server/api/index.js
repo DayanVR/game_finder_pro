@@ -4,6 +4,10 @@ const axios = require("axios");
 const helmet = require("helmet");
 const cors = require("cors");
 
+const authorization = process.env.AUTHORIZATION;
+const clientId = process.env.CLIENT_ID;
+
+
 const app = express();
 app.use(helmet());
 const PORT = process.env.PORT || 4000;
@@ -32,8 +36,8 @@ app.post("/api/games", async (req, res) => {
     }
     const headers = {
       Accept: "application/json",
-      Authorization: process.env.AUTHORIZATION,
-      "Client-ID": process.env.CLIENT_ID,
+      Authorization: authorization,
+      "Client-ID": clientId,
     };
     
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
@@ -54,8 +58,8 @@ app.post("/api/details", async (req, res) => {
     let query = `fields ${fields};`;
     const headers = {
       Accept: "application/json",
-      Authorization: process.env.AUTHORIZATION,
-      "Client-ID": process.env.CLIENT_ID,
+      Authorization: authorization,
+      "Client-ID": clientId,
     };
     
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
