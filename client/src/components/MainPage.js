@@ -61,6 +61,7 @@ const App = () => {
             headers,
           },
         );
+        console.log(`${process.env.REACT_APP_API_URL}/api/games`);
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {
