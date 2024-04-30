@@ -14,13 +14,13 @@ app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
-app.get("/try", async (req, res) => {
+app.get("/api", async (req, res) => {
   try {
     /*const { fields, limit } = req.body;*/
-    let fields = "*";
+    let fields = req.body;
     let limit = "5";
-
-    let query = `fields ${fields}; limit ${limit};`;
+    let query = `fields ${fields.fields}; limit ${limit};`;
+    console.log(query);
 
     const headers = {
       Accept: "application/json",
@@ -77,7 +77,6 @@ app.post("/api/details", async (req, res) => {
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
-    console.log(req.body);
     res.json(response.data);
   } catch (error) {
     console.error("Error:", error.message);
