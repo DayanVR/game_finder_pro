@@ -44,7 +44,6 @@ function GameDetailsPage() {
             headers,
           },
         );
-        console.log(`${process.env.API_URL}/api/details`);
         setGame(response.data[0]);
       } catch (error) {
         console.error("Error fetching game details:", error);

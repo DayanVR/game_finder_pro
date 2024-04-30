@@ -51,11 +51,16 @@ const App = () => {
         Authorization: `Bearer ${process.env.AUTHORIZATION}`,
         "Client-ID": `${process.env.CLIENT_ID}`,
       };
-      console.log(body);
+      console.log(headers);
+      console.log(`${process.env.API_URL}/api/games`);
       try {
-        const response = await axios.post(`${process.env.API_URL}/api/games`, body, {
-          headers,
-        });
+        const response = await axios.post(
+          `${process.env.API_URL}/api/games`,
+          body,
+          {
+            headers,
+          },
+        );
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {
