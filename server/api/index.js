@@ -81,7 +81,7 @@ app.post("/api/details", async (req, res) => {
     res.json(response.data);
   } catch (error) {
     console.error("Error:", error.message);
-    res.status(500).json({ error: "Internal server error" });
+    res.status(500).json({ error: error.message });
   }
 });
 
