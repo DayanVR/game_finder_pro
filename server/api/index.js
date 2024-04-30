@@ -32,7 +32,6 @@ app.post("/api/games", async (req, res) => {
       Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
       "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
     };
-    console.log(req.body);
 
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
