@@ -5,7 +5,6 @@ const cors = require("cors");
 
 const app = express();
 app.use(helmet());
-app.disable("x-powered-by");
 const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
