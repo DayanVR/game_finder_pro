@@ -55,7 +55,7 @@ app.post("/api/details", async (req, res) => {
   try {
     const { fields, where } = req.body;
     
-    let query = `fields ${fields};`;
+    let query = `fields ${fields}; where ${where};`;
     const headers = {
       Accept: "application/json",
       Authorization: authorization,
