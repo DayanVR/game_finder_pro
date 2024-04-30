@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const helmet = require("helmet");
 const cors = require("cors");
+require("dotenv").config();
 
 const app = express();
 app.use(helmet());
@@ -31,8 +32,8 @@ app.post("/api/games", async (req, res) => {
     }
     const headers = {
       Accept: "application/json",
-      Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
-      "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
+      Authorization: process.env.AUTHORIZATION,
+      "Client-ID": process.env.CLIENT_ID,
     };
 
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
@@ -53,8 +54,8 @@ app.post("/api/details", async (req, res) => {
     let query = `fields ${fields}; where ${where};`;
     const headers = {
       Accept: "application/json",
-      Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
-      "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
+      Authorization: process.env.AUTHORIZATION,
+      "Client-ID": process.env.CLIENT_ID,
     };
 
     const response = await axios.post("https://api.igdb.com/v4/games", query, {

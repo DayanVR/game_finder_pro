@@ -48,8 +48,8 @@ const App = () => {
       };
       const headers = {
         Accept: "application/json",
-        Authorization: "Bearer l8zckwd7hitohfpj4ni4tmjhq41go2",
-        "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
+        Authorization: `Bearer ${process.env.AUTHORIZATION}`,
+        "Client-ID": `${process.env.CLIENT_ID}`,
       };
       try {
         const response = await axios.post(
