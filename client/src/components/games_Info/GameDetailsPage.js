@@ -38,12 +38,13 @@ function GameDetailsPage() {
 
       try {
         const response = await axios.post(
-          "https://game-finder-pro.onrender.com/api/details",
+          `${process.env.API_URL}/api/details`,
           body,
           {
             headers,
           },
         );
+        console.log(`${process.env.API_URL}/api/details`);
         setGame(response.data[0]);
       } catch (error) {
         console.error("Error fetching game details:", error);

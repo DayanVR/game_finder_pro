@@ -35,11 +35,11 @@ app.post("/api/games", async (req, res) => {
       Authorization: process.env.AUTHORIZATION,
       "Client-ID": process.env.CLIENT_ID,
     };
-
+    
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
-
+    
     res.status(201).json(response.data);
   } catch (error) {
     console.error("Error:", error.message);
@@ -50,17 +50,19 @@ app.post("/api/games", async (req, res) => {
 app.post("/api/details", async (req, res) => {
   try {
     const { fields, where } = req.body;
-
+    
     let query = `fields ${fields}; where ${where};`;
     const headers = {
       Accept: "application/json",
       Authorization: process.env.AUTHORIZATION,
       "Client-ID": process.env.CLIENT_ID,
     };
-
+    
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
+    console.log(headers);
+
     res.json(response.data);
   } catch (error) {
     console.error("Error:", error.message);
