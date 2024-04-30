@@ -55,6 +55,7 @@ const App = () => {
         const response = await axios.post("/api/games", body, {
           headers,
         });
+        console.log(response.data);
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {
@@ -76,24 +77,6 @@ const App = () => {
     setGamesLibrary,
     setFilteredGames,
   ]);
-
-  
-    /*axios
-    .post("/api/games", {
-      fields: "name",
-      where: "id = 1",
-      limit: 10,
-      offset: 0,
-      sort: "name",
-      search: "gta",
-    })
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-    });*/
-  
 
   const handleOrderChange = (e) => {
     setPage(1);

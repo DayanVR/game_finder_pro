@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "start": "node ./api/index.js",
     "build": "npm run build",
     "deploy": "vercel --prod",
     "vercel-build": "echo hello"

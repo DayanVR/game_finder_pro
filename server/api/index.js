@@ -2,6 +2,7 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const serverless = require("serverless-http");
+const http = require("node:http");
 
 const app = express();
 const PORT = process.env.PORT || 4000;
@@ -11,7 +12,30 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
 
-app.listen(PORT, () => console.log("Server ready on port 4000."));
+app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
+
+app.get("/try", async (req, res) => {
+  try {
+    /*const { fields, limit } = req.body;*/
+    let fields = "*";
+    let limit = "5";
+
+    let query = `fields ${fields}; limit ${limit};`;
+
+    const headers = {
+      Accept: "application/json",
+      Authorization: "Bearer xgquzw1xe7xvsaway0v5sih2mbc0yi",
+      "Client-ID": "w3digq04cfa0r0n86enjwuwn3ci1hk",
+    };
+    const response = await axios.post("https://api.igdb.com/v4/games", query, {
+      headers,
+    });
+    res.json(response.data);
+  } catch (error) {
+    console.error("Error:", error.message);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 app.post("/api/games", async (req, res) => {
   try {
@@ -32,8 +56,7 @@ app.post("/api/games", async (req, res) => {
     const response = await axios.post("https://api.igdb.com/v4/games", query, {
       headers,
     });
-    console.log(response.data);
-    res.json(response.data);
+    res.status(201).json(response.data);
   } catch (error) {
     console.error("Error:", error.message);
     res.status(500).json({ error: "Internal server error" });
@@ -63,7 +86,6 @@ app.post("/api/details", async (req, res) => {
 });
 
 module.exports = app;
-
 
 /*app.use("/.netlify/functions/server", app);
 export const handler = serverless(app);*/
