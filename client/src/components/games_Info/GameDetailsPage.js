@@ -32,13 +32,13 @@ function GameDetailsPage() {
       };
       const headers = {
         Accept: "application/json",
-        Authorization: `Bearer ${process.env.AUTHORIZATION}`,
-        "Client-ID": `${process.env.CLIENT_ID}`,
+        Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+        "Client-ID": `${process.env.REACT_APP_CLIENT_ID}`,
       };
 
       try {
         const response = await axios.post(
-          `${process.env.API_URL}/api/details`,
+          `${process.env.REACT_APP_API_URL}/api/details`,
           body,
           {
             headers,

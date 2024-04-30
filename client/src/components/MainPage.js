@@ -46,12 +46,20 @@ const App = () => {
         limit: `${orderBy === "top-50" ? "50" : "12"}`,
         offset: changeOffsets.toString(),
       };
-
-      console.log(`${process.env.API_URL}/api/games`);
+      const headers = {
+        Accept: "application/json",
+        Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+        "Client-ID": `${process.env.REACT_APP_CLIENT_ID}`,
+      };
+      console.log(headers);
+      console.log(`${process.env.REACT_APP_API_URL}/api/games`);
       try {
         const response = await axios.post(
-          `${process.env.API_URL}/api/games`,
+          `${process.env.REACT_APP_API_URL}/api/games`,
           body,
+          {
+            headers,
+          },
         );
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
