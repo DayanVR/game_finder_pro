@@ -210,7 +210,7 @@ function GameDetailsPage() {
               </h1>
 
               <div>
-                <dl className="space-y-2 text-balance [&_dt]:pt-2">
+                <dl className="space-y-2 text-pretty [&_dt]:pt-2">
                   {formatDate && (
                     <>
                       <dt>
@@ -277,7 +277,7 @@ function GameDetailsPage() {
                     </>
                   )}
 
-                  <div className="mx-auto pb-2 xl:w-10/12 xl:text-center">
+                  <div className="mx-auto pb-2 xl:w-10/12">
                     <div className="flex justify-around pb-6 sm:justify-center md:space-x-8 lg:pt-4 xl:pt-8">
                       {game?.summary && (
                         <>
@@ -304,17 +304,13 @@ function GameDetailsPage() {
                       )}
                     </div>
                     {gameInfo === "summary" && (
-                      <dd className="line-clamp-6">{game?.summary}</dd>
+                      <dd className="line-clamp-6 xl:mx-7">{game?.summary}</dd>
                     )}
                     {gameInfo === "storyline" && (
-                      <dd className="line-clamp-6">{game?.storyline}</dd>
+                      <dd className="line-clamp-6 xl:mx-7">
+                        {game?.storyline}
+                      </dd>
                     )}
-                  </div>
-
-                  <div className="justify-between md:flex lg:w-11/12 xl:w-10/12 2xl:w-10/12 [&_div]:space-y-2 [&_dt]:pt-2">
-                    <div></div>
-
-                    <div></div>
                   </div>
                 </dl>
               </div>
