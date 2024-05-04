@@ -175,20 +175,20 @@ function GameDetailsPage() {
                   </h2>
                 </button>
               )}
-            </div>
 
-            <div>
-              <Link to="/games-library">
-                <label className="flex w-fit cursor-pointer items-center space-x-2 rounded-md px-3 py-2 hover:bg-slate-800/[0.8] max-lg:mx-auto ">
-                  <FontAwesomeIcon
-                    className="size-7 text-red-500 xl:size-8 2xl:size-9"
-                    icon={faBook}
-                  />
-                  <h2 className="text-3xl font-semibold text-white xl:text-4xl 2xl:text-5xl">
-                    Gamer Library
-                  </h2>
-                </label>
-              </Link>
+              <div>
+                <Link to="/games-library">
+                  <label className="flex w-fit cursor-pointer items-center space-x-2 rounded-md px-3 py-2 hover:bg-slate-800/[0.8] max-lg:mx-auto ">
+                    <FontAwesomeIcon
+                      className="size-7 text-red-500 xl:size-8 2xl:size-9"
+                      icon={faBook}
+                    />
+                    <h2 className="text-3xl font-semibold text-white xl:text-4xl 2xl:text-5xl">
+                      Gamer Library
+                    </h2>
+                  </label>
+                </Link>
+              </div>
             </div>
           </div>
 
