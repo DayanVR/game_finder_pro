@@ -118,7 +118,10 @@ const App = () => {
         return (title.current = "Top 50");
       } else if (titleChanged === "goty") {
         return (title.current = "Game of the Year");
-      } else if (titleChanged === "6") {
+      } else if (titleChanged === "search-game") {
+        return (title.current = "Searching Games");
+      }
+       else if (titleChanged === "6") {
         return (gamingConsole.current = "Pc Games");
       } else if (titleChanged === "2") {
         return (gamingConsole.current = "Xbox Games");
@@ -163,6 +166,7 @@ const App = () => {
           setGotyEditions={setGotyEditions}
           setFilteredGames={setFilteredGames}
           title={title.current}
+          setTitleChanged={setTitleChanged}
         />
 
         <div>

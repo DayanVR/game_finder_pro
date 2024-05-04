@@ -20,6 +20,7 @@ function Header(props) {
     props.setChangeOffsets(0);
     props.setFilteredGames(filtered);
     props.setGotyEditions(false);
+    props.setTitleChanged("search-game");
   };
 
   useEffect(() => {
