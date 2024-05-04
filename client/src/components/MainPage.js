@@ -162,6 +162,7 @@ const App = () => {
           setChangeOffsets={setChangeOffsets}
           setGotyEditions={setGotyEditions}
           setFilteredGames={setFilteredGames}
+          title={title.current}
         />
 
         <div>

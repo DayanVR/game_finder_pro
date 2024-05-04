@@ -23,7 +23,7 @@ export default function NavBar({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   let sidebarRef = useRef();
-  
+
   const customTheme = {
     sidebar: {
       root: {
@@ -50,7 +50,6 @@ export default function NavBar({
       document.removeEventListener("mousedown", handler);
     };
   });
-
 
   const handleDateClick = (e) => {
     const currentDate = new Date();
@@ -91,7 +90,10 @@ export default function NavBar({
   };
 
   return (
-    <div ref={sidebarRef} className="fixed top-0 z-50 -mx-5 w-full md:-mx-12 lg:w-60 xl:-mx-8 xl:w-72 2xl:-mx-32 min-[2560px]:-mx-8">
+    <div
+      ref={sidebarRef}
+      className="fixed top-0 z-50 -mx-5 w-full md:-mx-12 lg:w-60 xl:-mx-8 xl:w-72 2xl:-mx-32 min-[2560px]:-mx-8"
+    >
       <button
         className="absolute left-0 top-0 z-50 p-4 text-[#ee4444] focus:outline-none md:left-6 md:top-1 lg:left-10 lg:top-2 xl:hidden"
         onClick={handleToggleMenu}
