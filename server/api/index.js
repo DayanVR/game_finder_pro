@@ -57,7 +57,7 @@ app.post("/api/games", async (req, res) => {
     };
 
     const response = await axios.post(
-      `${API_URL}`,
+      `${apiCall}`,
       query,
       {
         headers,
@@ -85,7 +85,7 @@ app.post("/api/details", async (req, res) => {
     };
 
     const response = await axios.post(
-      `${API_URL}`,
+      `${apiCall}`,
       query,
       {
         headers,
