@@ -13,7 +13,7 @@ app.use(helmet());
 const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: "*",
+  origin: "https://gamefinderpro.netlify.app",
   methods: ["GET", "POST"],
   allowedHeaders: [
     "Content-Type",
