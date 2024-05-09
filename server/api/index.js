@@ -6,20 +6,21 @@ const cors = require("cors");
 
 const authorization = process.env.AUTHORIZATION;
 const clientId = process.env.CLIENT_ID;
+const originPage = process.env.ORIGIN; 
 
 const app = express();
 app.use(helmet());
 const PORT = process.env.PORT || 4000;
 
 const corsOptions = {
-  origin: "https://gamefinderpro.netlify.app",
+  origin: originPage,
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type", "Authorization", "Client-ID"],
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 
-app.get("/", (req, res) => res.send("Express on Render"));
+app.get("/", (req, res) => res.send("Express on Vercel"));
 
 app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
