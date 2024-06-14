@@ -186,7 +186,7 @@ const App = () => {
               />
 
               <div
-                className={`${orderBy === "top-50" ? "hidden" : ""} w-full space-x-2.5 self-center rounded-md bg-gray-100 py-2.5 text-2xl max-lg:py-2.5 max-md:mx-auto md:w-3/12 lg:w-2/12`}
+                className={`${orderBy === "top-50" ? "hidden" : ""} w-full space-x-3.5 self-center rounded-md bg-gray-100 py-2.5 text-2xl max-lg:py-2.5 max-md:mx-auto md:w-3/12 lg:w-2/12`}
               >
                 <Pagination
                   filteredGames={filteredGames}
