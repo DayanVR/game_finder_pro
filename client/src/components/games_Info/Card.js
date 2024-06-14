@@ -15,7 +15,7 @@ const Card = ({ game }) => {
 
   const rateBorder = () => {
     if (fullRate >= 90) {
-      return "border-green-600 text-green-600";
+      return "border-green-400 text-green-400";
     }
     if (fullRate >= 80) {
       return "border-green-300 text-green-300";
