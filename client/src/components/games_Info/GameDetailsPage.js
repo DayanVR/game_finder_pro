@@ -19,10 +19,6 @@ function GameDetailsPage() {
 
   const navigate = useNavigate();
 
-  const handleClick = () => {
-    navigate("/");
-  };
-
   useEffect(() => {
     const fetchGame = async () => {
       const body = {
@@ -139,7 +135,7 @@ function GameDetailsPage() {
           <div className="items-center justify-between text-center text-black max-md:mx-auto max-md:space-y-2 md:flex ">
             <div>
               <button
-                onClick={handleClick}
+                onClick={() => navigate("/")}
                 className="w-full rounded-md bg-gray-100 px-4 py-2 text-2xl font-bold"
               >
                 <FontAwesomeIcon icon={faArrowLeft} />
