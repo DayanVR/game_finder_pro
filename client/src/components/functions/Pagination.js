@@ -15,7 +15,7 @@ function Pagination(props) {
   };
 
   return (
-    <>
+    <div className="[&>button]:px-0.5">
       {props.filteredGames.length < 12 ? (
         <>
           <button
@@ -79,7 +79,7 @@ function Pagination(props) {
           </button>
         </>
       )}
-    </>
+    </div>
   );
 }
 
