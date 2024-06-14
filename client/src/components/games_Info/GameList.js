@@ -24,7 +24,7 @@ function GameList({
             ))}
           </div>
           <div
-            className={`${orderBy === "top-50" ? "hidden" : ""} mx-auto space-x-2.5 rounded-md bg-gray-200 py-2.5 text-2xl font-bold max-md:w-10/12 max-md:sm:w-6/12 md:w-4/12 lg:w-3/12 2xl:w-2/12`}
+            className={`${orderBy === "top-50" ? "hidden" : ""} mx-auto space-x-3.5 rounded-md bg-gray-200 py-2.5 text-2xl font-bold max-md:w-10/12 max-md:sm:w-6/12 md:w-4/12 lg:w-3/12 2xl:w-2/12`}
           >
             <Pagination
               filteredGames={filteredGames}
