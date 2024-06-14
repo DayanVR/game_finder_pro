@@ -121,7 +121,6 @@ export default function NavBar({
               <Sidebar.Item
                 icon={HiHome}
                 
-                className="cursor-pointer"
               >
                 <button onClick={() => window.location.reload()}>Home</button>
               </Sidebar.Item>
