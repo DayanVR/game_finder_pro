@@ -3,7 +3,7 @@ import React from "react";
 function Selection(props) {
   return (
     <div className="flex max-md:mx-auto max-md:flex-col max-md:space-y-4 md:justify-between md:space-x-4 lg:space-x-6 ">
-      <label className="absolute text-transparent" htmlFor="sorting">Sort by:</label>
+      <label className="absolute text-transparent invisible" htmlFor="sorting">Sort by:</label>
       <select
         onChange={props.handleOrderChange}
         disabled={props.searchGame}
