@@ -123,7 +123,7 @@ export default function NavBar({
                 onClick={() => window.location.reload()}
                 className="cursor-pointer"
               >
-                <span>Home</span>
+                <button>Home</button>
               </Sidebar.Item>
               <Sidebar.Collapse icon={HiPlusCircle} label="New Releases">
                 <Sidebar.Item>
