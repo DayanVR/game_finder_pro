@@ -129,7 +129,7 @@ const Card = ({ game }) => {
           </div>
         </div>
         <div>
-          <h1 className="mt-2 text-balance line-clamp-2 text-2xl font-medium h-64">{game?.name}</h1>
+          <h1 className="mt-2 text-balance line-clamp-2 text-2xl font-medium h-16">{game?.name}</h1>
         </div>
         <div className="flex justify-between">
           <p>{game?.rating_count} Votes</p>
