@@ -73,7 +73,7 @@ const Card = ({ game }) => {
           game.cover?.url.replace("t_thumb", "t_cover_big") ??
           "img-not-found.jpg"
         }
-        className="h-[224px] w-[274px] rounded-t-xl object-cover"
+        className="h-[224px] w-[274px] rounded-t-xl"
         alt=""
       />
 
