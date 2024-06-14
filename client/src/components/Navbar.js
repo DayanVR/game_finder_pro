@@ -120,10 +120,10 @@ export default function NavBar({
             <Sidebar.ItemGroup className="-space-y-0 border-t-0 md:ml-4 md:space-y-6 lg:ml-8 max-2xl:xl:ml-3 [&_*]:font-medium [&_a]:w-fit [&_button]:text-2xl [&_button]:md:text-3xl [&_span]:text-2xl [&_span]:sm:text-3xl [&_span]:md:text-4xl [&_svg]:size-8 [&_svg]:xl:size-9">
               <Sidebar.Item
                 icon={HiHome}
-                onClick={() => window.location.reload()}
+                
                 className="cursor-pointer"
               >
-                <button>Home</button>
+                <button onClick={() => window.location.reload()}>Home</button>
               </Sidebar.Item>
               <Sidebar.Collapse icon={HiPlusCircle} label="New Releases">
                 <Sidebar.Item>
