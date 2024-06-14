@@ -70,10 +70,10 @@ const Card = ({ game }) => {
     <div className="mx-auto w-[274px] h-[410px] transform cursor-pointer rounded-b-xl rounded-t-xl bg-slate-800/[0.6] pb-4 text-left duration-300 ease-in xl:hover:scale-105 2xl:hover:scale-110">
       <img
         src={
-          game.cover?.url.replace("t_thumb", "t_cover_big") ??
+          game.cover?.url.replace("t_thumb", "t_logo_med") ??
           "img-not-found.jpg"
         }
-        className="h-[224px] w-[274px] rounded-t-xl aspect-video "
+        className="h-[284px] w-[160px] rounded-t-xl aspect-video "
         alt=""
       />
 
