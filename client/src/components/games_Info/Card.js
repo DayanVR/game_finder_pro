@@ -67,13 +67,13 @@ const Card = ({ game }) => {
   const formattedDate = formatDate(game.first_release_date);
 
   return (
-    <div className="mx-auto w-[274px] transform cursor-pointer rounded-b-xl rounded-t-xl bg-slate-800/[0.6] pb-4 text-left duration-300 ease-in xl:hover:scale-105 2xl:hover:scale-110">
+    <div className="mx-auto w-[274px] h-[410px] transform cursor-pointer rounded-b-xl rounded-t-xl bg-slate-800/[0.6] pb-4 text-left duration-300 ease-in xl:hover:scale-105 2xl:hover:scale-110">
       <img
         src={
           game.cover?.url.replace("t_thumb", "t_cover_big") ??
           "img-not-found.jpg"
         }
-        className="h-[224px] w-[274px] rounded-t-xl aspect-video"
+        className="h-[224px] w-[274px] rounded-t-xl aspect-video "
         alt=""
       />
 
@@ -129,7 +129,7 @@ const Card = ({ game }) => {
           </div>
         </div>
         <div>
-          <h1 className="mt-2 text-wrap text-2xl font-medium">{game?.name}</h1>
+          <h1 className="mt-2 text-balance line-clamp-2 text-2xl font-medium h-64">{game?.name}</h1>
         </div>
         <div className="flex justify-between">
           <p>{game?.rating_count} Votes</p>
