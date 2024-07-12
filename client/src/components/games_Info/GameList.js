@@ -14,7 +14,7 @@ function GameList({
     <>
       {filteredGames && filteredGames.length > 0 ? (
         <>
-          <div className="grid grid-flow-row grid-cols-1 text-white md:grid-cols-2 xl:grid-cols-3 min-[1700px]:grid-cols-4 min-[2560px]:grid-cols-6">
+          <div id="animate" className="grid grid-flow-row grid-cols-1 text-white md:grid-cols-2 xl:grid-cols-3 min-[1700px]:grid-cols-4 min-[2560px]:grid-cols-6">
             {filteredGames.map((game) => (
               <div key={game.id} className="mx-auto my-5 xl:my-8">
                 <Link to={`/games/${game.slug}`}>
