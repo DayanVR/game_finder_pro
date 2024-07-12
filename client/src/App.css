@@ -6,7 +6,7 @@ body {
   background-color: black;
 }
 
-#animate {
+#animate > div {
   animation: reveal linear both;
   animation-timeline: view();
   animation-range: entry 5% cover 15%;
