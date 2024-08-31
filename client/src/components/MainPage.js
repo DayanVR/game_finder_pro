@@ -39,7 +39,7 @@ const App = () => {
       setLoading(true);
       const body = {
         fields:
-          "name,cover.url,genres.name,platforms.name,platforms.category,platforms.platform_family.*,rating,rating_count,first_release_date,slug,version_title",
+          "name,videos.video_id,cover.url,genres.name,platforms.name,platforms.category,platforms.platform_family.*,rating,rating_count,first_release_date,slug,version_title",
         where: `rating >= 40 ${gotyEditions ? `& (version_title ~ *"Game of the Year Edition"* | version_title ~ *"GOTY Edition"*)` : ""} ${platformId === "6" || platformId === "34" || platformId === "39" ? `& platforms = ${platformId}` : ""} ${platformId === "1" || platformId === "2" ? `& platforms.platform_family = ${platformId}` : ""} ${releasedGameDate && `& first_release_date >= ${releasedGameDate}`}`,
         sort: `${orderBy === "order-asc" ? "rating asc" : "" || orderBy === "name-asc" ? "name asc" : "" || orderBy === "name-desc" ? "name desc" : "" || orderBy === "none" ? "rating desc" : "" || orderBy === "top-50" ? "rating_count desc" : ""}`,
         search: `${searchGame}`,

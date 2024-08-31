@@ -10,6 +10,7 @@ import {
 
 const Card = ({ game }) => {
   const [platformIcons, setPlatformIcons] = useState(new Set());
+  const [hover, setHover] = useState(false);
 
   let fullRate = Math.round(game.rating);
 
@@ -64,18 +65,37 @@ const Card = ({ game }) => {
       return `${month}/${day}/${year}`;
     }
   };
+
+  let videoSource;
+  if (game?.videos) {
+    videoSource = `https://www.youtube.com/embed/${game?.videos[0].video_id}?autoplay=1&mute=1`;
+  }
   const formattedDate = formatDate(game.first_release_date);
 
   return (
-    <div className="mx-auto w-[274px] h-[410px] transform cursor-pointer rounded-b-xl rounded-t-xl bg-slate-800/[0.6] pb-4 text-left duration-300 ease-in xl:hover:scale-105 2xl:hover:scale-110">
-      <img
-        src={
-          game.cover?.url.replace("t_thumb", "t_cover_big") ??
-          "img-not-found.jpg"
-        }
-        className="h-[224px] w-[274px] rounded-t-xl"
-        alt=""
-      />
+    <div
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      className="mx-auto h-[410px] w-[274px] transform cursor-pointer rounded-b-xl rounded-t-xl bg-slate-800/[0.6] pb-4 text-left duration-300 ease-in xl:hover:scale-105 2xl:hover:scale-110"
+    >
+      {hover && game?.videos ? (
+        <iframe
+          title={game.name}
+          src={videoSource}
+          loading="lazy"
+          loop
+          className="h-[224px] w-[274px] rounded-t-xl"
+        />
+      ) : (
+        <img
+          src={
+            game.cover?.url.replace("t_thumb", "t_cover_big") ??
+            "img-not-found.jpg"
+          }
+          className="h-[224px] w-[274px] rounded-t-xl"
+          alt={game.name}
+        />
+      )}
 
       <div className="mx-4 space-y-3">
         <div className="mt-3 flex items-center justify-between last:bg-red-200">
@@ -129,7 +149,9 @@ const Card = ({ game }) => {
           </div>
         </div>
         <div>
-          <h1 className="mt-2 text-balance line-clamp-2 text-2xl font-medium h-16">{game?.name}</h1>
+          <h1 className="mt-2 line-clamp-2 h-16 text-balance text-2xl font-medium">
+            {game?.name}
+          </h1>
         </div>
         <div className="flex justify-between">
           <p>{game?.rating_count} Votes</p>

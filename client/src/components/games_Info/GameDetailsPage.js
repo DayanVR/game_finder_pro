@@ -23,7 +23,7 @@ function GameDetailsPage() {
     const fetchGame = async () => {
       const body = {
         fields:
-          "name,slug,rating,rating_count,cover.url,genres.name,game_modes.name,involved_companies.company.name,involved_companies.*,first_release_date,storyline,summary,player_perspectives.name,screenshots.url,themes.name,videos.*,platforms.name,platforms.category,platforms.platform_family.*",
+          "name,slug,rating,rating_count,cover.url,genres.name,game_modes.name,involved_companies.company.name,involved_companies.*,first_release_date,storyline,summary,player_perspectives.name,screenshots.url,themes.name,videos.video_id,platforms.name,platforms.category,platforms.platform_family.*",
         where: `slug = "${slug}"`,
       };
       const headers = {
@@ -71,8 +71,6 @@ function GameDetailsPage() {
   let video_id = `https://www.youtube.com/embed/`;
   if (game?.videos) {
     video_id = video_id + game?.videos[0]?.video_id;
-  } else {
-    video_id = "https://www.youtube.com/embed/";
   }
 
   const developerCompany = game?.involved_companies?.find(
