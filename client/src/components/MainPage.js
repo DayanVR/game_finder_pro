@@ -48,7 +48,7 @@ const App = () => {
       };
       const headers = {
         Accept: "application/json",
-        Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+        Authorization: `${process.env.REACT_APP_AUTH_TOKEN}`,
         "Client-ID": `${process.env.REACT_APP_CLIENT_ID}`,
       };
       try {
