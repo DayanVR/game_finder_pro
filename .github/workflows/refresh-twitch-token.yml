@@ -44,5 +44,6 @@ jobs:
             -d "{
               \"key\": \"AUTHORIZATION\",
               \"value\": \"${{ steps.extract.outputs.token }}\",
-              \"target\": [\"production\", \"preview\", \"development\"]
+              \"target\": [\"production\", \"preview\", \"development\"],
+              \"type\": \"encrypted\"
             }"
