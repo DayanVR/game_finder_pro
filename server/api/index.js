@@ -42,10 +42,6 @@ app.post("/api/games", async (req, res) => {
 
     console.log("=== REQUEST DEBUG ===");
     console.log("Query:", query);
-    console.log("Headers:", {
-      ...headers,
-      Authorization: headers.Authorization?.substring(0, 20) + "...",
-    });
 
     const response = await axios.post(`${apiCall}`, query, {
       headers,
@@ -58,7 +54,6 @@ app.post("/api/games", async (req, res) => {
     if (error.response) {
       console.error("Status:", error.response.status);
       console.error("Response data:", JSON.stringify(error.response.data, null, 2));
-      console.error("Response headers:", error.response.headers);
     }
     if (error.request && !error.response) {
       console.error("No response received. Request:", error.request);
