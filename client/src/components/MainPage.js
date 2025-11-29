@@ -62,7 +62,8 @@ const App = () => {
         setGamesLibrary(response.data);
         setFilteredGames(response.data);
       } catch (error) {
-        console.error("Error:", error);
+
+        console.error("Error:", error.message);
       } finally {
         setLoading(false);
       }
