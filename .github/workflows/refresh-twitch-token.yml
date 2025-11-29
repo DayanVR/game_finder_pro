@@ -21,11 +21,14 @@ jobs:
             -d grant_type=client_credentials)
           echo "response=$response" >> $GITHUB_OUTPUT
 
-      - name: Extraer access_token
-        id: extract
-        run: |
-          token=$(echo "${{ steps.twitch.outputs.response }}" | jq -r .access_token)
-          echo "token=$token" >> $GITHUB_OUTPUT
+     - name: Extraer access_token
+  id: extract
+  run: |
+    response="${{ steps.twitch.outputs.response }}"
+    # Remove the "response=" prefix if present
+    response_json="${response#response=}"
+    token=$(echo "$response_json" | jq -r .access_token)
+    echo "token=$token" >> $GITHUB_OUTPUT
 
       - name: Actualizar variable en Vercel
         run: |
