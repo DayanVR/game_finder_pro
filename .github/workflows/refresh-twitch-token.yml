@@ -38,11 +38,17 @@ jobs:
 
       - name: Actualizar variable en Vercel
         run: |
-          curl -X POST "https://api.vercel.com/v10/projects/${{ secrets.VERCEL_PROJECT_ID }}/env" \
+          # Obtener ID de la variable existente
+          ENV_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID }}/env" | \
+            jq -r '.envs[] | select(.key=="AUTHORIZATION") | .id')
+
+          # Hacer PATCH para actualizar la variable
+          curl -X PATCH "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID }}/env/$ENV_ID" \
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "{
-              \"key\": \"AUTHORIZATION\",
               \"value\": \"${{ steps.extract.outputs.token }}\",
-              \"target\": [\"production\", \"preview\", \"development\"]
+              \"target\": [\"production\", \"preview\", \"development\"],
+              \"type\": \"encrypted\"
             }"
