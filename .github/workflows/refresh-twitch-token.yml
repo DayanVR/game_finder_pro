@@ -36,10 +36,10 @@ jobs:
       - name: Actualizar variable en Vercel
         run: |
           ENV_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-            "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID }}/env" | \
+            "https://api.vercel.com/v9/projects/${{ secrets.SERVER_PROJECT_ID }}/env" | \
             jq -r '.envs[] | select(.key=="AUTHORIZATION") | .id')
 
-          curl -X PATCH "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID }}/env/$ENV_ID" \
+          curl -X PATCH "https://api.vercel.com/v9/projects/${{ secrets.SERVER_PROJECT_ID }}/env/$ENV_ID" \
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "{
@@ -50,11 +50,15 @@ jobs:
 
       - name: Actualizar variable en Netlify
         run: |
-          curl -X PATCH "https://api.netlify.com/api/v1/accounts/${{ secrets.NETLIFY_ACCOUNT_ID }}/env/REACT_APP_AUTH_TOKEN" \
-            -H "Authorization: Bearer ${{ secrets.NETLIFY_TOKEN }}" \
+          ENV_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            "https://api.vercel.com/v9/projects/${{ secrets.CLIENT_PROJECT_ID }}/env" | \
+            jq -r '.envs[] | select(.key=="AUTHORIZATION") | .id')
+
+          curl -X PATCH "https://api.vercel.com/v9/projects/${{ secrets.CLIENT_PROJECT_ID }}/env/$ENV_ID" \
+            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "{
               \"value\": \"${{ steps.extract.outputs.token }}\",
-              \"is_secret\": true,
-              \"scopes\": [\"builds\", \"functions\", \"runtime\"] 
+              \"target\": [\"production\", \"preview\", \"development\"],
+              \"type\": \"encrypted\"
             }"
