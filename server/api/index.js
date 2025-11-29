@@ -16,24 +16,17 @@ const PORT = process.env.PORT;
 const corsOptions = {
   origin: originLink,
   methods: ["GET", "POST"],
-  allowedHeaders: [
-    "Content-Type",
-    "Authorization",
-    "Client-ID",
-  ],
+  allowedHeaders: ["Content-Type", "Authorization", "Client-ID"],
 };
 app.use(cors(corsOptions));
 app.use(express.json());
 
 app.get("/", (req, res) => res.send("Express on Vercel"));
-app.listen(PORT, () =>
-  console.log(`Server ready on port ${PORT}.`)
-);
+app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
 app.post("/api/games", async (req, res) => {
   try {
-    const { fields, where, limit, offset, sort, search } =
-      req.body;
+    const { fields, where, limit, offset, sort, search } = req.body;
 
     let query = `fields ${fields}; where ${where}; limit ${limit}; offset ${offset};`;
     if (search && search.length > 0) {
@@ -47,16 +40,33 @@ app.post("/api/games", async (req, res) => {
       "Client-ID": clientId,
     };
 
+    console.log("=== REQUEST DEBUG ===");
+    console.log("Query:", query);
+    console.log("Headers:", {
+      ...headers,
+      Authorization: headers.Authorization?.substring(0, 20) + "...",
+    });
+
     const response = await axios.post(`${apiCall}`, query, {
       headers,
     });
 
     res.status(201).json(response.data);
   } catch (error) {
-    console.error("Error:", error.message);
-    res
-      .status(500)
-      .json({ error: "Internal server error" });
+    console.error("=== ERROR DEBUG ===");
+    console.error("Error message:", error.message);
+    if (error.response) {
+      console.error("Status:", error.response.status);
+      console.error("Response data:", JSON.stringify(error.response.data, null, 2));
+      console.error("Response headers:", error.response.headers);
+    }
+    if (error.request && !error.response) {
+      console.error("No response received. Request:", error.request);
+    }
+    res.status(500).json({
+      error: "Internal server error",
+      details: error.response?.data || error.message,
+    });
   }
 });
 
@@ -77,8 +87,16 @@ app.post("/api/details", async (req, res) => {
 
     res.json(response.data);
   } catch (error) {
-    console.error("Error:", error.message);
-    res.status(500).json({ error: error.message });
+    console.error("=== DETAILS ERROR ===");
+    console.error("Error message:", error.message);
+    if (error.response) {
+      console.error("Status:", error.response.status);
+      console.error("Response data:", JSON.stringify(error.response.data, null, 2));
+    }
+    res.status(500).json({
+      error: error.message,
+      details: error.response?.data,
+    });
   }
 });
 
