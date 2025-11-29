@@ -33,7 +33,7 @@ jobs:
 
           echo "token=$token" >> $GITHUB_OUTPUT
 
-      - name: Actualizar variable en Vercel
+      - name: Update server token
         run: |
           ENV_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             "https://api.vercel.com/v9/projects/${{ secrets.SERVER_PROJECT_ID }}/env" | \
@@ -48,7 +48,7 @@ jobs:
               \"type\": \"encrypted\"
             }"
 
-      - name: Actualizar variable en Netlify
+      - name: Update client token
         run: |
           ENV_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             "https://api.vercel.com/v9/projects/${{ secrets.CLIENT_PROJECT_ID }}/env" | \
