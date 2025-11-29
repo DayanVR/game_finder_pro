@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import axios from "axios";
 import "../App.css";
 import Pagination from "./functions/Pagination";
@@ -51,6 +51,7 @@ const App = () => {
         Authorization: `${process.env.REACT_APP_AUTH_TOKEN}`,
         "Client-ID": `${process.env.REACT_APP_CLIENT_ID}`,
       };
+      console.log(headers)
       try {
         const response = await axios.post(
           `${process.env.REACT_APP_API_URL}/api/games`,
