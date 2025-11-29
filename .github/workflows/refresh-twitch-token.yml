@@ -24,26 +24,21 @@ jobs:
       - name: Extraer access_token
         id: extract
         run: |
-          # Obtener el JSON directamente del paso anterior
           response_json=$(curl -s -X POST "https://id.twitch.tv/oauth2/token" \
             -d client_id=${{ secrets.TWITCH_CLIENT_ID }} \
             -d client_secret=${{ secrets.TWITCH_CLIENT_SECRET }} \
             -d grant_type=client_credentials)
 
-          # Extraer access_token usando jq -r
           token=$(echo "$response_json" | jq -r .access_token)
 
-          # Guardar en $GITHUB_OUTPUT
           echo "token=$token" >> $GITHUB_OUTPUT
 
       - name: Actualizar variable en Vercel
         run: |
-          # Obtener ID de la variable existente
           ENV_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID }}/env" | \
             jq -r '.envs[] | select(.key=="AUTHORIZATION") | .id')
 
-          # Hacer PATCH para actualizar la variable
           curl -X PATCH "https://api.vercel.com/v9/projects/${{ secrets.VERCEL_PROJECT_ID }}/env/$ENV_ID" \
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             -H "Content-Type: application/json" \
@@ -51,4 +46,14 @@ jobs:
               \"value\": \"${{ steps.extract.outputs.token }}\",
               \"target\": [\"production\", \"preview\", \"development\"],
               \"type\": \"encrypted\"
+            }"
+
+      - name: Actualizar variable en Netlify
+        run: |
+          curl -X PATCH "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/env" \
+            -H "Authorization: Bearer ${{ secrets.NETLIFY_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"key\": \"REACT_APP_AUTH_TOKEN\",
+              \"value\": \"${{ steps.extract.outputs.token }}\"
             }"
