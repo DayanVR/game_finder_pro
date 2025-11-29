@@ -52,13 +52,13 @@ jobs:
         run: |
           ENV_ID=$(curl -s -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             "https://api.vercel.com/v9/projects/${{ secrets.CLIENT_PROJECT_ID }}/env" | \
-            jq -r '.envs[] | select(.key=="AUTHORIZATION") | .id')
+            jq -r '.envs[] | select(.key=="REACT_APP_AUTH_TOKEN") | .id')
 
           curl -X PATCH "https://api.vercel.com/v9/projects/${{ secrets.CLIENT_PROJECT_ID }}/env/$ENV_ID" \
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "{
-              \"value\": \"${{ steps.extract.outputs.token }}\",
+              \"value\": \"Bearer ${{ steps.extract.outputs.token }}\",
               \"target\": [\"production\", \"preview\", \"development\"],
               \"type\": \"encrypted\"
             }"
