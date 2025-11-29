@@ -50,10 +50,11 @@ jobs:
 
       - name: Actualizar variable en Netlify
         run: |
-          curl -X PATCH "https://api.netlify.com/api/v1/sites/${{ secrets.NETLIFY_SITE_ID }}/env" \
+          curl -X PATCH "https://api.netlify.com/api/v1/accounts/${{ secrets.NETLIFY_ACCOUNT_ID }}/env/REACT_APP_AUTH_TOKEN" \
             -H "Authorization: Bearer ${{ secrets.NETLIFY_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "{
-              \"key\": \"REACT_APP_AUTH_TOKEN\",
-              \"value\": \"${{ steps.extract.outputs.token }}\"
+              \"value\": \"${{ steps.extract.outputs.token }}\",
+              \"is_secret\": true,
+              \"scopes\": [\"builds\", \"functions\", \"runtime\"] 
             }"
