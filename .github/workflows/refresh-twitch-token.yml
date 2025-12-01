@@ -75,6 +75,7 @@ jobs:
               \"target\": \"production\",
               \"gitSource\": {
                 \"type\": \"github\",
+                \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
                 \"ref\": \"main\"
               },
               \"rootDirectory\": \"game_finder_pro/server\"
@@ -91,6 +92,7 @@ jobs:
               \"target\": \"production\",
               \"gitSource\": {
                 \"type\": \"github\",
+                \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
                 \"ref\": \"main\"
               },
               \"rootDirectory\": \"game_finder_pro/client\"
