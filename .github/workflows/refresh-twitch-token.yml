@@ -70,6 +70,7 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "{
+              \"name\": \"${{ secrets.SERVER_PROJECT_NAME }}\",
               \"projectId\": \"${{ secrets.SERVER_PROJECT_ID }}\"
             }"
 
@@ -79,5 +80,6 @@ jobs:
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
             -H "Content-Type: application/json" \
             -d "{
+              \"name\": \"${{ secrets.CLIENT_PROJECT_NAME }}\",
               \"projectId\": \"${{ secrets.CLIENT_PROJECT_ID }}\"
             }"
