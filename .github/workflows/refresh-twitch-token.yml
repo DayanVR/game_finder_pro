@@ -2,7 +2,7 @@ name: Refresh Twitch Token
 
 on:
   schedule:
-    - cron: "*/1 * * * *" # cada 2 meses
+    - cron: "0 0 */2 * *"
   workflow_dispatch: {} # permite ejecutar manualmente
 
 jobs:
@@ -31,6 +31,7 @@ jobs:
 
           token=$(echo "$response_json" | jq -r .access_token)
 
+          echo "::add-mask::$token"
           echo "token=$token" >> $GITHUB_OUTPUT
 
       - name: Update server token
