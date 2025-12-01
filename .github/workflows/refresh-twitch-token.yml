@@ -78,7 +78,6 @@ jobs:
                 \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
                 \"ref\": \"main\"
               },
-              \"rootDirectory\": \"game_finder_pro/server\"
             }"
 
       - name: Redeploy CLIENT
@@ -95,5 +94,4 @@ jobs:
                 \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
                 \"ref\": \"main\"
               },
-              \"rootDirectory\": \"game_finder_pro/client\"
             }"
