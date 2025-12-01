@@ -63,3 +63,21 @@ jobs:
               \"target\": [\"production\", \"preview\", \"development\"],
               \"type\": \"encrypted\"
             }"
+
+      - name: Redeploy Server
+        run: |
+          curl -X POST "https://api.vercel.com/v13/deployments" \
+            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"projectId\": \"${{ secrets.SERVER_PROJECT_ID }}\"
+            }"
+
+      - name: Redeploy Client
+        run: |
+          curl -X POST "https://api.vercel.com/v13/deployments" \
+            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"projectId\": \"${{ secrets.CLIENT_PROJECT_ID }}\"
+            }"
