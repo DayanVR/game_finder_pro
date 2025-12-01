@@ -77,7 +77,7 @@ jobs:
                 \"type\": \"github\",
                 \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
                 \"ref\": \"main\"
-              },
+              }
             }"
 
       - name: Redeploy CLIENT
@@ -93,5 +93,5 @@ jobs:
                 \"type\": \"github\",
                 \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
                 \"ref\": \"main\"
-              },
+              }
             }"
