@@ -64,23 +64,23 @@ jobs:
               \"type\": \"encrypted\"
             }"
 
-      - name: Redeploy Server
+      - name: Redeploy SERVER
         run: |
           curl -X POST "https://api.vercel.com/v13/deployments" \
-          -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-          -H "Content-Type: application/json" \
-          -d "{
-            \"name\": \"${{ secrets.SERVER_PROJECT_NAME }}\",
-            \"project\": \"${{ secrets.SERVER_PROJECT_ID }}\",
-            \"target\": \"production\",
-            \"gitSource\": {
-              \"type\": \"github\",
-              \"ref\": \"main\"
-            }
-          }"
+            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            -d "{
+              \"name\": \"${{ secrets.SERVER_PROJECT_NAME }}\",
+              \"project\": \"${{ secrets.SERVER_PROJECT_ID }}\",
+              \"target\": \"production\",
+              \"gitSource\": {
+                \"type\": \"github\",
+                \"ref\": \"main\"
+              },
+              \"rootDirectory\": \"game_finder_pro/server\"
+            }"
 
-
-      - name: Redeploy Client
+      - name: Redeploy CLIENT
         run: |
           curl -X POST "https://api.vercel.com/v13/deployments" \
             -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
@@ -92,26 +92,6 @@ jobs:
               \"gitSource\": {
                 \"type\": \"github\",
                 \"ref\": \"main\"
-                }
-              }"
-
-
-      - name: Redeploy Server
-        run: |
-          curl -X POST "https://api.vercel.com/v13/deployments" \
-            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d "{
-              \"name\": \"${{ secrets.SERVER_PROJECT_NAME }}\",
-              \"projectId\": \"${{ secrets.SERVER_PROJECT_ID }}\"
-            }"
-
-      - name: Redeploy Client
-        run: |
-          curl -X POST "https://api.vercel.com/v13/deployments" \
-            -H "Authorization: Bearer ${{ secrets.VERCEL_TOKEN }}" \
-            -H "Content-Type: application/json" \
-            -d "{
-              \"name\": \"${{ secrets.CLIENT_PROJECT_NAME }}\",
-              \"projectId\": \"${{ secrets.CLIENT_PROJECT_ID }}\"
+              },
+              \"rootDirectory\": \"game_finder_pro/client\"
             }"
