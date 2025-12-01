@@ -2,7 +2,7 @@ name: Refresh Twitch Token
 
 on:
   schedule:
-    - cron: "0 0 */2 * *" # cada 2 meses
+    - cron: "*/1 * * * *" # cada 2 meses
   workflow_dispatch: {} # permite ejecutar manualmente
 
 jobs:
