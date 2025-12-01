@@ -3,7 +3,7 @@ name: Refresh Twitch Token
 on:
   schedule:
     - cron: "0 0 */2 * *"
-  workflow_dispatch: {} # permite ejecutar manualmente
+  workflow_dispatch: {}
 
 jobs:
   refresh-token:
