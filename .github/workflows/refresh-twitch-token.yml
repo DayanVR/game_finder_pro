@@ -76,7 +76,7 @@ jobs:
               \"gitSource\": {
                 \"type\": \"github\",
                 \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
-                \"ref\": \"main\"
+                \"ref\": \"master\"
               }
             }"
 
@@ -92,6 +92,6 @@ jobs:
               \"gitSource\": {
                 \"type\": \"github\",
                 \"repoId\": \"${{ secrets.VERCEL_REPO_ID }}\",
-                \"ref\": \"main\"
+                \"ref\": \"master\"
               }
             }"
