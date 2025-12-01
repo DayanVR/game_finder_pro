@@ -36,7 +36,7 @@ app.post("/api/games", async (req, res) => {
     }
     const headers = {
       Accept: "application/json",
-      Authorization: authorization,
+      Authorization: `Bearer ${authorization}`,
       "Client-ID": clientId,
     };
 
@@ -72,7 +72,7 @@ app.post("/api/details", async (req, res) => {
     let query = `fields ${fields}; where ${where};`;
     const headers = {
       Accept: "application/json",
-      Authorization: authorization,
+      Authorization: `Bearer ${authorization}`,
       "Client-ID": clientId,
     };
 
