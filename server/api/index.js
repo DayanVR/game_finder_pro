@@ -40,9 +40,6 @@ app.post("/api/games", async (req, res) => {
       "Client-ID": clientId,
     };
 
-    console.log("=== REQUEST DEBUG ===");
-    console.log("Query:", query);
-
     const response = await axios.post(`${apiCall}`, query, {
       headers,
     });
