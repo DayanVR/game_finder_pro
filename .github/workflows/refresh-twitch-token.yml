@@ -2,7 +2,7 @@ name: Refresh Twitch Token
 
 on:
   schedule:
-    - cron: "0 0 */58 * *"
+    - cron: "0 0 1 */2 *"
   workflow_dispatch: {}
 
 jobs:
