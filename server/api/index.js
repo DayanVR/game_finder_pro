@@ -1,28 +1,27 @@
-require("dotenv").config();
-const express = require("express");
-const axios = require("axios");
-const helmet = require("helmet");
-const cors = require("cors");
+process.loadEnvFile();
+
+import express from "express";
+import axios from "axios";
+import helmet from "helmet";
+import { corsMiddleware } from "../middlewares/cors.js";
 
 const authorization = process.env.AUTHORIZATION;
 const clientId = process.env.CLIENT_ID;
-const originLink = process.env.ORIGIN;
 const apiCall = process.env.API_URL;
+const PORT = process.env.PORT;
 
 const app = express();
 app.use(helmet());
-const PORT = process.env.PORT;
 
-const corsOptions = {
-  origin: originLink,
-  methods: ["GET", "POST"],
-  allowedHeaders: ["Content-Type", "Authorization", "Client-ID"],
-};
-app.use(cors(corsOptions));
+app.set("trust proxy", 1);
+app.use(corsMiddleware());
 app.use(express.json());
 
+if (process.env.NODE_ENV !== "production") {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}.`));
+}
+
 app.get("/", (req, res) => res.send("Express on Vercel"));
-app.listen(PORT, () => console.log(`Server ready on port ${PORT}.`));
 
 app.post("/api/games", async (req, res) => {
   try {
@@ -92,4 +91,4 @@ app.post("/api/details", async (req, res) => {
   }
 });
 
-module.exports = app;
+export default app;
