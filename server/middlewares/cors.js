@@ -1,5 +1,3 @@
-process.loadEnvFile();
-
 import cors from "cors";
 
 const ACCEPTED_ORIGINS = ["http://localhost:3000", "https://game-finder-pro-client.vercel.app"];

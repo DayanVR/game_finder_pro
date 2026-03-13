@@ -1,5 +1,3 @@
-process.loadEnvFile();
-
 import express from "express";
 import axios from "axios";
 import helmet from "helmet";
@@ -12,7 +10,6 @@ const PORT = process.env.PORT;
 
 const app = express();
 app.use(helmet());
-
 app.use(corsMiddleware());
 app.use(express.json());
 
