@@ -1,6 +1,10 @@
 import cors from "cors";
 
-const ACCEPTED_ORIGINS = ["http://localhost:3000", "https://game-finder-pro-client.vercel.app"];
+const ACCEPTED_ORIGINS = [
+  "http://localhost:3000",
+  "https://game-finder-pro-client.vercel.app",
+  "https://game-finder-pro-v2.vercel.app",
+];
 
 const corsOptions = {
   methods: ["GET", "POST"],
